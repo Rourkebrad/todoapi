@@ -1,8 +1,7 @@
 <?php
 
-use Slim\App;
 
-return function (App $app) {
+
     $container = $app->getContainer();
 
     // view renderer
@@ -40,8 +39,3 @@ return function (App $app) {
     $container['task'] = function($c) {
     return new App\Model\Task($c->get('db'));
     };
-
-
-
-
-};

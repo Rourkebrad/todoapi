@@ -30,11 +30,11 @@ class Task
 
     public function createTask($data)
       {
-      $statement =$this->database->prepare(
-        'INSERT INTO tasks(task, status) VALUES(:task, :status)'
+      $statement = $this->database->prepare(
+        'INSERT INTO tasks(task, status) VALUES (:task, :status)'
       );
-        $statement->bindParam('task', $data['status']);
-        $statement->bindParam('status', $data['task']);
+        $statement->bindParam('task', $data['task']);
+        $statement->bindParam('status', $data['status']);
         $statement->execute();
         return $this->getTask($this->database->lastInsertId());
       }
@@ -56,7 +56,7 @@ class Task
       $statement =$this->database->prepare(
         'DELETE FROM tasks WHERE id=:id'
       );
-      $statement->bindParam('id', $task_id]);
+      $statement->bindParam('id', $task_id);
       $statement->execute();
       return ['message' => 'Task has been deleted'];
   }
